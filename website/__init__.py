@@ -9,7 +9,7 @@ DB_NAME = "offline.db"
 
 
 def create_app():
-    app.cre
+    app.create
 
     return app
 
