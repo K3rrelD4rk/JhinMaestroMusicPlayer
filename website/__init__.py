@@ -1,20 +1,11 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from os import path
-from flask_login import LoginManager
-from APIs import auth
-
-db = SQLAlchemy()
-DB_NAME = "offline.db"
-
-
-def create_app():
-    app.create
-
-    return app
-
-
-def create_database(app):
-    if not path.exists('website/' + DB_NAME):
-        db.create_all(app=app)
-        print('Created database')
+from APIs import  auth
+from imports import token
+from dotenv import load_dotenv
+import os
+load_dotenv()
+def main():
+    client_id = os.getenv("CLIENT_ID")
+    client_secret = os.getenv("CLIENT_SECRET")
+    redirect_uri = os.getenv("REDIRECT_URI")
+    token_client = token(client_id, client_secret,redirect_uri)
+    
