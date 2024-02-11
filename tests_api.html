@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html id="app" lang="it" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Error - Spotify - Spotify</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <base href="/">
+  <link rel="icon" href="https://accounts.scdn.co/sso/images/favicon.ace4d8543bbb017893402a1e9d1ac1fa.ico">
+  <script defer src="https://accounts.scdn.co/sso/js/indexReact.6feea73dc284cdb1ccc3.js" sp-bootstrap></script>
+  <meta id="bootstrap-data" sp-bootstrap-data='{"error":"server_error","error_description":"An unexpected server error has occurred.","BON":["0","0",-613802904]}' sp-component="error" sp-translations-data='eyJlcnJvclRpdGxlIjoiRXJyb3JlIiwiZXJyb3JGb3JtRGVmYXVsdCI6Ik9wcywgcXVhbGNvc2Egw6ggYW5kYXRvIHN0b3J0by4gUmlwcm92YSBwacO5IHRhcmRpIG8gY29uc3VsdGEgbCc8aGVscExpbms+YXJlYSBkaSBhc3Npc3RlbnphPC9oZWxwTGluaz4ifQ=='>
+  <style>
+    body {
+      background-color: #121212;
+      margin: 0;
+    }
+    #root {
+      min-height: 100vh;
+    }
+    .loading-indicator-container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .loading-indicator-container * {
+      box-sizing: border-box;
+    }
+    .loading-indicator {
+      content: "";
+      width: 56px;
+      inline-size: 56px;
+      block-size: 12.4px;
+      height: 12.4px;
+      overflow-clip-margin: content-box;
+      overflow: hidden;
+    }
+    .loading-indicator circle {
+      fill: white;
+      animation: loading-indicator-kf 1.32s linear infinite;
+      transform-origin: center center;
+      opacity: 0.5;
+    }
+    .loading-indicator circle:nth-of-type(2) {
+      animation-delay: 0.1s;
+    }
+    .loading-indicator circle:nth-of-type(3) {
+      animation-delay: 0.2s;
+    }
+    @keyframes loading-indicator-kf {
+      0% {
+        animation-timing-function: cubic-bezier(1, 0, 0.7, 1);
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      40% {
+        animation-timing-function: cubic-bezier(0.3, 0, 0, 1);
+        opacity: 0.75;
+        transform: scale(1.3);
+      }
+      72.5% {
+        animation-timing-function: linear;
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body class="encore-dark-theme">
+<div id="root">
+  <div class="loading-indicator-container">
+    <svg class="loading-indicator" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1 100" xml:space="preserve" role="progressbar" aria-valuetext="Loading">
+      <circle stroke="none" cx="-140" cy="50" r="32"></circle>
+      <circle stroke="none" cx="0" cy="50" r="32"></circle>
+      <circle stroke="none" cx="140" cy="50" r="32"></circle>
+    </svg>
+  </div>
+</div>
+</body>
+</html>
