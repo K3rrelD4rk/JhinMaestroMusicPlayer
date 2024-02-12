@@ -2,6 +2,7 @@ import random
 import requests
 import json
 from io import StringIO
+import os
 import hashlib
 
 def verify(client_id, redirect_uri):
@@ -9,7 +10,7 @@ def verify(client_id, redirect_uri):
     scope = "user-read-private user-read-email"
     auth_url = "https://accounts.spotify.com/authorize"
     s = requests.session()
-    g = s.get(auth_url, auth =(client_id), scope = scope, response_type= 'code', code_challenge = code_verify, code_challenge_method = 'S256')
+    g = s.get(auth_url, auth =(client_id), data = { "scope" : scope, "response_type" : 'code', "code_challenge" : code_verify, "code_challenge_method" : 'S256'})
 
 
 def token(client_id, client_secret, redirect_uri):
@@ -23,4 +24,12 @@ def token(client_id, client_secret, redirect_uri):
     return token
 
 
-def get_profile(userid, email):
+#def get_profile(userid, email):
+client_id = os.getenv("CLIENT_ID")
+
+code_verify = hashlib.sha256.digest(random.Random(128))
+scope = "user-read-private user-read-email"
+auth_url = "https://accounts.spotify.com/authorize"
+s = requests.session()
+g = s.get(auth_url, auth = (client_id), data = { "scope" : scope, "response_type" : 'code', "code_challenge" : code_verify, "code_challenge_method" : 'S256'})
+print()
