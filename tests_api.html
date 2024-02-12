@@ -1,83 +1,70 @@
-<!DOCTYPE html>
-<html id="app" lang="it" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>Error - Spotify - Spotify</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <base href="/">
-  <link rel="icon" href="https://accounts.scdn.co/sso/images/favicon.ace4d8543bbb017893402a1e9d1ac1fa.ico">
-  <script defer src="https://accounts.scdn.co/sso/js/indexReact.6feea73dc284cdb1ccc3.js" sp-bootstrap></script>
-  <meta id="bootstrap-data" sp-bootstrap-data='{"error":"server_error","error_description":"An unexpected server error has occurred.","BON":["0","0",-613802904]}' sp-component="error" sp-translations-data='eyJlcnJvclRpdGxlIjoiRXJyb3JlIiwiZXJyb3JGb3JtRGVmYXVsdCI6Ik9wcywgcXVhbGNvc2Egw6ggYW5kYXRvIHN0b3J0by4gUmlwcm92YSBwacO5IHRhcmRpIG8gY29uc3VsdGEgbCc8aGVscExpbms+YXJlYSBkaSBhc3Npc3RlbnphPC9oZWxwTGluaz4ifQ=='>
-  <style>
-    body {
-      background-color: #121212;
-      margin: 0;
-    }
-    #root {
-      min-height: 100vh;
-    }
-    .loading-indicator-container {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .loading-indicator-container * {
-      box-sizing: border-box;
-    }
-    .loading-indicator {
-      content: "";
-      width: 56px;
-      inline-size: 56px;
-      block-size: 12.4px;
-      height: 12.4px;
-      overflow-clip-margin: content-box;
-      overflow: hidden;
-    }
-    .loading-indicator circle {
-      fill: white;
-      animation: loading-indicator-kf 1.32s linear infinite;
-      transform-origin: center center;
-      opacity: 0.5;
-    }
-    .loading-indicator circle:nth-of-type(2) {
-      animation-delay: 0.1s;
-    }
-    .loading-indicator circle:nth-of-type(3) {
-      animation-delay: 0.2s;
-    }
-    @keyframes loading-indicator-kf {
-      0% {
-        animation-timing-function: cubic-bezier(1, 0, 0.7, 1);
-        opacity: 0.5;
-        transform: scale(1);
-      }
-      40% {
-        animation-timing-function: cubic-bezier(0.3, 0, 0, 1);
-        opacity: 0.75;
-        transform: scale(1.3);
-      }
-      72.5% {
-        animation-timing-function: linear;
-        opacity: 0.5;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0.5;
-        transform: scale(1);
-      }
-    }
-  </style>
-</head>
-<body class="encore-dark-theme">
-<div id="root">
-  <div class="loading-indicator-container">
-    <svg class="loading-indicator" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1 100" xml:space="preserve" role="progressbar" aria-valuetext="Loading">
-      <circle stroke="none" cx="-140" cy="50" r="32"></circle>
-      <circle stroke="none" cx="0" cy="50" r="32"></circle>
-      <circle stroke="none" cx="140" cy="50" r="32"></circle>
-    </svg>
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+<!-- Response Data -->
+<div id="profile" class="media">
+  {% if data.images %}
+  <div class="mr-4">
+    <img class="media-object" width="150" src="{{ data.images.0.url }}"/>
+  </div>
+  {% endif %}
+  <div class="media-body">
+    <h1>Logged in as <i>{{ data.display_name }}</i></h1>
+    <dl class="dl-horizontal">
+      <dt>Id</dt><dd>{{ data.id }}</dd>
+      <dt>Email</dt><dd>{{ data.email }}</dd>
+      <dt>Country</dt><dd>{{ data.country }}</dd>
+      <dt>Followers</dt><dd>{{ data.followers.total }}</dd>
+      <dt>Account Type</dt><dd>{{ data.product }}</dd>
+      <dt>Spotify Url</dt><dd><a href="{{ data.external_urls.spotify }}">{{ data.external_urls.spotify }}</a></dd>
+      <dt>URI</dt><dd><a href="{{ data.uri }}">{{ data.uri }}</a></dd>
+    </dl>
   </div>
 </div>
-</body>
-</html>
+
+  <h2>Token Information</h2>
+  <dl class="dl-horizontal" id="tokens">
+    <dt>Access token</dt><dd class="text-truncate">{{ tokens.access_token }}</dd>
+    <dt>Refresh token</dt><dd class="text-truncate">{{ tokens.refresh_token }}</dd>
+  </dl>
+{% endblock %}
+
+{% block footer %}
+<button type="button" class="btn btn-success btn-xs" onclick="refreshTokens()">Refresh Token</button>
+<a href="/logout" class="btn btn-danger btn-xs">Logout</a>
+
+
+<!-- Token info template -->
+{% raw %}
+<script id="token-template" type="text/x-handlebars-template">
+  <dt>Access token</dt><dd class="text-truncate">{{access_token}}</dd>
+  <dt>Refresh token</dt><dd class="text-truncate">{{refresh_token}}</dd>
+</script>
+{% endraw %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.js"></script>
+<script>
+  (function() {
+
+    // Token template
+    var tokenSource = document.getElementById('token-template').innerHTML,
+        tokenTemplate = Handlebars.compile(tokenSource),
+        tokenPlaceholder = document.getElementById('tokens');
+
+    function refreshTokens() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          let res_json = JSON.parse(this.responseText);
+          tokenPlaceholder.innerHTML = tokenTemplate(res_json);
+        }
+      };
+      xhttp.open("GET", "{{ url_for('refresh') }}", true);
+      xhttp.send();
+    }
+
+    window.refreshTokens = refreshTokens;
+  })();
+</script>
+{% endblock %}
