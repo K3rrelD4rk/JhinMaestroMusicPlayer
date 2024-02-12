@@ -26,10 +26,11 @@ def token(client_id, client_secret, redirect_uri):
 
 #def get_profile(userid, email):
 client_id = os.getenv("CLIENT_ID")
+client_secret = os.getenv("CLIENT_SECRET")
 
 code_verify = hashlib.sha256.digest(random.Random(128))
 scope = "user-read-private user-read-email"
 auth_url = "https://accounts.spotify.com/authorize"
 s = requests.session()
-g = s.get(auth_url, auth = (client_id), data = { "scope" : scope, "response_type" : 'code', "code_challenge" : code_verify, "code_challenge_method" : 'S256'})
+g = s.get(auth_url, data = { "scope" : scope, "response_type" : 'code', "code_challenge" : code_verify, "code_challenge_method" : 'S256'},)
 print()
