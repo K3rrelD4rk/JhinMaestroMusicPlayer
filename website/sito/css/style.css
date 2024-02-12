@@ -3,8 +3,6 @@
 body {
   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #d9d9d9;
- width: 90%;
- 
 }
 
 nav {
@@ -147,7 +145,7 @@ div .div
   background-color: black;
 }
 .spotify-playlists {
-  padding: 50px 200px;
+  padding: 50px 100px;
 }
 .spotify-playlists h2 {
   color: #181818;
@@ -197,7 +195,7 @@ div .div
 }
 */
 .spotify-playlists1 {
-  padding: 50px 200px;
+  padding: 50px 100px;
 }
 .spotify-playlists .list .item h4 {
   color: #ffffff;
