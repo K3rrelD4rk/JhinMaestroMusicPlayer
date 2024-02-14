@@ -9,10 +9,6 @@ from flask import (
 import os
 load_dotenv()
 
-logging.basicConfig(
-    format='%(asctime)s - %(levelname)s - %(message)s', level=logging.DEBUG
-)
-
 # Client info
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
@@ -38,4 +34,5 @@ def main():
     client_secret = os.getenv("CLIENT_SECRET")
     redirect_uri = os.getenv("REDIRECT_URI")
     token_client = token(client_id, client_secret,redirect_uri)
-    
+    Token = token_client["access_token"]
+    Refresh_token = token_client["refresh_token"]
