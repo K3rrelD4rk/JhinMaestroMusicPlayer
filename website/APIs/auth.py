@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from flask import (
     abort,
     Flask,
@@ -15,6 +16,7 @@ import requests
 import secrets
 import string
 from urllib.parse import urlencode
+load_dotenv()
 
 
 logging.basicConfig(
@@ -25,7 +27,7 @@ logging.basicConfig(
 # Client info
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
-REDIRECT_URI = os.getenv('REDIRECT_URI')
+REDIRECT_URI = os.getenv('REDIRECT_URL')
 
 
 # Spotify API endpoints
