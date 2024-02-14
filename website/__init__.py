@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from flask import (
     Flask,
     render_template,
-    logging
 )
 import os
 load_dotenv()
@@ -27,7 +26,7 @@ app.secret_key = os.getenv('SECRET_KEY')
 @app.route('/')
 def index():
 
-    return render_template('index.html')
+    return render_template('/website/sito/index.html')
 
 def main():
     client_id = os.getenv("CLIENT_ID")
