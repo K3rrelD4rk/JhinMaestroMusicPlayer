@@ -10,7 +10,8 @@ load_dotenv()
 
 s = requests.session()
 def verify(client_id, redirect_uri):
-    code_verify = hashlib.sha256(string.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k = 128)))
+    code_verify = ' '.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k = 128))
+    code_verify = hashlib.sha256(code_verify.encode())
     code_verify = code_verify.digest()
     scope = "user-read-private user-read-email"
     auth_url = "https://accounts.spotify.com/authorize"
