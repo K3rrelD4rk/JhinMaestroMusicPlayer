@@ -8,15 +8,6 @@ from flask import (
 import os
 load_dotenv()
 
-# Client info
-CLIENT_ID = os.getenv('CLIENT_ID')
-CLIENT_SECRET = os.getenv('CLIENT_SECRET')
-REDIRECT_URI = os.getenv('REDIRECT_URL')
-
-
-# Spotify API endpoints
-AUTH_URL = 'https://accounts.spotify.com/authorize'
-TOKEN_URL = 'https://accounts.spotify.com/api/token'
 ME_URL = 'https://api.spotify.com/v1/me'
 
 # Start 'er up
@@ -25,14 +16,16 @@ app.secret_key = os.getenv('SECRET_KEY')
 
 @app.route('/')
 def index():
-
     return render_template('/website/sito/index.html')
 
 def main():
+    code = os.getenv("CODE")
     client_id = os.getenv("CLIENT_ID")
     client_secret = os.getenv("CLIENT_SECRET")
     redirect_uri = os.getenv("REDIRECT_URI")
-    token_client = token(client_id, client_secret,redirect_uri)
+    token_client = token(client_id, client_secret,redirect_uri,code)
     Token = token_client["access_token"]
+    print(Token)
     Refresh_token = token_client["refresh_token"]
+    print(Refresh_token)
     
