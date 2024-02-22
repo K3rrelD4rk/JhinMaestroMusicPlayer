@@ -4,12 +4,15 @@ from urllib.parse import urlencode
 import base64
 import webbrowser
 from dotenv import load_dotenv
+from flask import Blueprint
 import requests
 import json
 from io import StringIO
 import os
 import hashlib
 load_dotenv()
+
+imports = Blueprint('imports', __name__)
 
 s = requests.session()
 
@@ -24,7 +27,7 @@ def verify(client_id, redirect_uri):
     c = json.loads(g.content.decode('utf-8'))
     return c
 
-def token(client_id, client_secret, redirect_uri, code):
+def tokens(client_id, client_secret, redirect_uri, code):
     url = "https://accounts.spotify.com/api/token"
     h = {"Content-Type": "application/x-www-form-urlencoded" , "redirect_uri" : redirect_uri}
     d = {'grant_type': 'client_credentials', "code" : code, "redirect_uri": redirect_uri}
