@@ -10,6 +10,7 @@ import json
 from io import StringIO
 import os
 import hashlib
+import sqlite3
 load_dotenv()
 
 imports = Blueprint('imports', __name__)
@@ -35,3 +36,26 @@ def tokens(client_id, client_secret, redirect_uri, code):
     a = json.loads(p.content.decode("utf-8"))
     return a
 
+def connectdb(dbpath="database.db"):
+    try:
+        connection = sqlite3.connect(dbpath)
+    except sqlite3.Error:
+        print("ERROR: Unable to open DB: " + dbpath)
+    return connection.cursor()
+
+def createUser(username, email, password, db: sqlite3.Cursor):
+    if db.execute("SELECT name FROM sqlite_master WHERE name='User'").fetchone() is not None:
+        db.execute("""
+                    CREATE TABLE Users (
+                        id INT NOT NULL AUTO_INCREMENT,
+                        username TEXT NOT NULL,
+                        email TEXT NOT NULL,
+                        password VARCHAR(40) NOT NULL
+                    )
+                   """)
+    else:
+        return
+        
+    
+    
+    
