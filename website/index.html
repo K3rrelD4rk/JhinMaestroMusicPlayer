@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %} Red Hot Groove {%en</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  crossorigin="anonymous">
+  <link rel="stylesheet" href="css/login_register_style.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/library.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/search.css">
+  <script defer src="js/index.js"></script>
+  </head>
+  <section class="menu-section" id = "menu-section">
+    <header>
+      <nav>
+          <ul class="menuItems">
+            <div><li><a href='#' data-item='Red Hot Groove' role="button" onclick="about()">Red Hot Groove</a></li>
+            <li><a href='#' data-item='Home' onclick="Home()">Home</a></li>
+            <li><a href='#'  id="libreria" data-item='La tua libreria' role="button" onclick="library()">La tua libreria</a></li>
+            </div>
+              <div><li>
+                <div class="search-container">
+                  <form method="post">
+                    <input type="text" placeholder="Search.." id="Search-Bar">
+                    <button type="submit"><i class="fa fa-search" onclick="search()"></i></button>
+                  </form>
+                </div>
+                </li>
+                <li>
+                  <a href="#"><button class="button-21" class="libcerca" id="accedi" onclick="login()">SignIn</button></a>
+                </li>
+            </div>
+          </ul>
+        </nav>
+  </header>
+</section>
+  <body style="text-align: center;">
+    <section class="login-register" id="login-register">
+
+      <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
+      
+      <!--Login Page-->
+      <div class="signin" id="signin"> 
+        <div class="content"> 
+         <h2>Sign In</h2> 
+         <div class="form"> 
+          <div class="inputBox"> 
+           <input type="text" name="email" required> <i>Email</i> 
+          </div> 
+          <div class="inputBox"> 
+           <input type="password" required> <i>Password</i> 
+          </div> 
+          <div class="links"> <a href="forgot_password.html">Forgot Password</a> <a href="#" id="signin_button" onclick="signup_style()">Sign up</a> 
+          </div> 
+          <div class="inputBox"> 
+           <input type="submit" value="Login"> 
+          </div> 
+         </div> 
+        </div> 
+      </div> 
+
+      <!--Register Page-->
+      <div class="signup" id="signup"> 
+        <div class="content"> 
+         <h2>Sign up</h2> 
+         <div class="form"> 
+          <div class="inputBox"> 
+           <input type="text" name="name" required> <i>Name</i> 
+          </div> 
+          <div class="inputBox"> 
+            <input type="text" name="surname" required> <i>Surname</i> 
+           </div>
+           <div class="inputBox"> 
+            <input type="text" name="username" required> <i>Username</i> 
+           </div>
+          <div class="inputBox"> 
+           <input type="text" name="email" required> <i>Email</i> 
+          </div>
+          <div class="inputBox"> 
+           <input type="password" name="password" required> <i>Password</i> 
+          </div> 
+          <div class="links"><a href="#" id="signup_button" onclick="signin_style()">Already Logged in?</a> 
+          </div> 
+          <div class="inputBox"> 
+           <input type="submit" value="Register"> 
+          </div> 
+         </div> 
+        </div> 
+      </div> 
+    </section>
+    
+    <!--Home Page Sito-->
+    <section class="home" id="home">
+      <div class="spotify-playlists">
+        <h2>Ascoltati di recente</h2>
+        <div class="list">
+          <div class="item">
+            <div></div>
+            <div class="play">
+              <span class="fa fa-play"></span>
+            </div>
+            <h4>Today's Top Hits</h4>
+            <p>Rema & Selena Gomez are on top of the...</p>
+          </div>
+        
+          <div class="item">
+            <div></div>
+            <div class="play">
+              <span class="fa fa-play"></span>
+            </div>
+            <h4>RapCaviar</h4>
+            <p>New Music from Lil Baby, Juice WRLD an...</p>
+          </div>
+    
+          <div class="item">
+            <div></div>
+            <div class="play">
+              <span class="fa fa-play"></span>
+            </div>
+            <h4>RapCaviar</h4>
+            <p>New Music from Lil Baby, Juice WRLD an...</p>
+          </div>
+          <div class="item">
+            <div></div>
+            <div class="play">
+              <span class="fa fa-play"></span>
+            </div>
+            <h4>RapCaviar</h4>
+            <p>New Music from Lil Baby, Juice WRLD an...</p>
+          </div>
+          <div class="item">
+            <div></div>
+            <div class="play">
+              <span class="fa fa-play"></span>
+            </div>
+            <h4>RapCaviar</h4>
+            <p>New Music from Lil Baby, Juice WRLD an...</p>
+          </div>
+          <div class="item">
+            <div></div>
+            <div class="play">
+              <span class="fa fa-play"></span>
+            </div>
+            <h4>RapCaviar</h4>
+            <p>New Music from Lil Baby, Juice WRLD an...</p>
+          </div>
+        </div>
+      </div>  
+        <!--Seconda fila-->
+        <div class="spotify-playlists1">
+          <h2>Novità di oggi</h2>
+      
+          <div class="list">
+            <div class="item">
+              <div></div>
+              <div class="play">
+                <span class="fa fa-play"></span>
+              </div>
+              <h4>Today's Top Hits</h4>
+              <p>Rema & Selena Gomez are on top of the...</p>
+            </div>
+          
+            <div class="item">
+              <div></div>
+              <div class="play">
+                <span class="fa fa-play"></span>
+              </div>
+              <h4>RapCaviar</h4>
+              <p>New Music from Lil Baby, Juice WRLD an...</p>
+            </div>
+      
+            <div class="item">
+              <div></div>
+              <div class="play">
+                <span class="fa fa-play"></span>
+              </div>
+              <h4>RapCaviar</h4>
+              <p>New Music from Lil Baby, Juice WRLD an...</p>
+            </div>
+            <div class="item">
+              <div></div>
+              <div class="play">
+                <span class="fa fa-play"></span>
+              </div>
+              <h4>RapCaviar</h4>
+              <p>New Music from Lil Baby, Juice WRLD an...</p>
+            </div>
+            <div class="item">
+              <div></div>
+              <div class="play">
+                <span class="fa fa-play"></span>
+              </div>
+              <h4>RapCaviar</h4>
+              <p>New Music from Lil Baby, Juice WRLD an...</p>
+            </div>
+            <div class="item">
+              <div></div>
+              <div class="play">
+                <span class="fa fa-play"></span>
+              </div>
+              <h4>RapCaviar</h4>
+              <p>New Music from Lil Baby, Juice WRLD an...</p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+
+    <!--Libreria Utente-->
+    <section class="library_section" id="library_section">
+      <h1> Library </h1>
+      <section class="profile_section" id="profile_section">
+
+      </section>
+      <section class="playlist_section" id="playlist_section">
+      
+      </section>
+      <section class="offline_section" id="offline_section">
+
+      </section>
+    </section>
+
+
+    <!--About Progetto-->
+    <section class="about_section" id="about_section">
+      <h1> About </h1>
+
+    </section>
+
+
+    <!--Search Section-->
+    <section class="search_section" id="search_section">
+      <h1> Search </h1>
+
+    </section>
+  </body>
+</html>
